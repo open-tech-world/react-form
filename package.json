@@ -9,7 +9,8 @@
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "doc": "create-react-doc"
   },
   "repository": "git@github.com:open-tech-world/react-form.git",
   "author": {
@@ -18,6 +19,9 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@open-tech-world/create-react-doc": "^0.5.12",
+    "@types/react": "^16.9.0",
+    "mdi-material-ui": "^6.2.0",
     "rollup": "^1.19.4",
     "rollup-plugin-cleaner": "^1.0.0",
     "rollup-plugin-typescript2": "^0.22.1",
@@ -25,5 +29,8 @@
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.0.1",
     "typescript": "^3.5.3"
+  },
+  "peerDependencies": {
+    "react": "^16.9.0"
   }
 }

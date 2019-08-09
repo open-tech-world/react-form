@@ -1,0 +1,13 @@
+{
+    "title": "@open-tech-world/react-form",
+    "githubRepoURL": "",
+    "versions": [
+        {
+            "name": "v1",
+            "tag": "Latest",
+            "root": "/index",
+            "default": true,
+            "menu": []
+        }
+    ]
+}
