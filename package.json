@@ -2,10 +2,14 @@
   "name": "@open-tech-world/react-form",
   "version": "0.1.0",
   "description": "Create forms in React.",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "files": [
+    "dist/"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tsc": "tsc"
+    "build": "rollup -c"
   },
   "repository": "git@github.com:open-tech-world/react-form.git",
   "author": {
@@ -14,6 +18,9 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "rollup": "^1.19.4",
+    "rollup-plugin-cleaner": "^1.0.0",
+    "rollup-plugin-typescript2": "^0.22.1",
     "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.0.1",
