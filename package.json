@@ -2,8 +2,18 @@
   "name": "@open-tech-world/react-form",
   "version": "0.1.0",
   "description": "Create forms in React.",
-  "main": "index.js",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc"
+  },
   "repository": "git@github.com:open-tech-world/react-form.git",
-  "author": "Thanga Ganapathy",
-  "license": "MIT"
+  "author": {
+    "name": "Thanga Ganapathy",
+    "email": "ganapathy888@gmail.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.5.3"
+  }
 }
