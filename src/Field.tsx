@@ -13,7 +13,7 @@ export default function Field(props: IProps) {
   const { name, type, component, context, ...otherProps } = props;
   const { state, dispatch } = useContext(context);
   const Component = component || 'input';
-  const Type = type || 'input';
+  const Type = type || 'text';
 
   const handleChange: React.ChangeEventHandler = (
     e: React.ChangeEvent<HTMLInputElement>
