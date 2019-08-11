@@ -11,6 +11,7 @@ export default function SimpleForm() {
     <div>
       <Form onSubmit={handleSubmit}>
         <Field name="firstName" />
+        <Field name="lastName" />
         <button type="submit">Submit</button>
       </Form>
     </div>

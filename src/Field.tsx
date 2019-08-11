@@ -1,29 +1,31 @@
-import React from 'react';
+import React, { useContext, useMemo } from 'react';
 
 import { IFormContext } from './formContext';
 
 interface IProps {
   name: string;
   component: string | React.ComponentType;
-  // context: React.Context<IFormContext>;
-  dispatch: (obj: object) => void;
+  context: React.Context<IFormContext>;
 }
 
-function Field({ name, component, dispatch, ...otherProps }: IProps) {
-  // const { errors } = React.useContext(context);
-  // tslint:disable-next-line: no-console
-  // console.log(errors);
+export default function Field(props: IProps) {
+  const { name, component, context, ...otherProps } = props;
+  const { state, dispatch } = useContext(context);
   const Component = component || 'input';
 
-  const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
+  const handleChange: React.ChangeEventHandler = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     dispatch({ type: 'set', payload: { name, value: e.currentTarget.value } });
   };
-
-  return React.createElement(Component, {
-    // @ts-ignore
-    onChange: handleChange,
-    ...otherProps,
-  });
+  return useMemo(() => {
+    return React.createElement<React.InputHTMLAttributes<HTMLInputElement>>(
+      Component,
+      {
+        onChange: handleChange,
+        value: state[name],
+        ...otherProps,
+      }
+    );
+  }, [state[name]]);
 }
-
-export default Field;

@@ -1,9 +1,9 @@
-interface IAction {
+export interface IAction {
   type: string;
   payload: any;
 }
 
-export default function reducer(state: object, action: IAction) {
+export default function reducer(state: object, action: IAction): object {
   switch (action.type) {
     case 'reset':
       return { ...action.payload };

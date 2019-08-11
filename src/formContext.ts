@@ -1,9 +1,13 @@
 import React from 'react';
 
+import { IAction } from './reducer';
+
 export interface IFormContext {
-  errors: object;
+  state: { [key: string]: any };
+  dispatch: React.Dispatch<IAction>;
 }
 
 export default React.createContext<IFormContext>({
-  errors: {},
+  dispatch: () => null,
+  state: {},
 });

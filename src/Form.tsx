@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 
 import FormContext from './formContext';
 import reducer from './reducer';
@@ -9,7 +9,7 @@ interface IProps {
 }
 
 function Form(props: IProps) {
-  const [state, dispatch] = React.useReducer(reducer, { userId: 55 });
+  const [state, dispatch] = useReducer(reducer, {});
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -19,14 +19,14 @@ function Form(props: IProps) {
   const renderChildren = () => {
     return React.Children.map(props.children, (child: React.ReactElement) => {
       return React.cloneElement(child, {
-        dispatch,
+        context: FormContext,
         ...child.props,
       });
     });
   };
 
   return (
-    <FormContext.Provider value={{ errors: {} }}>
+    <FormContext.Provider value={{ state, dispatch }}>
       <form onSubmit={handleSubmit}>{renderChildren()}</form>
     </FormContext.Provider>
   );
