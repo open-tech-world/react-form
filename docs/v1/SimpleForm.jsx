@@ -12,6 +12,7 @@ export default function SimpleForm() {
       <Form onSubmit={handleSubmit}>
         <Field name="firstName" />
         <Field name="lastName" />
+        <Field name="accept" type="checkbox" />
         <button type="submit">Submit</button>
       </Form>
     </div>

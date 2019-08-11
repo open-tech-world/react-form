@@ -4,14 +4,16 @@ import { IFormContext } from './formContext';
 
 interface IProps {
   name: string;
+  type: string;
   component: string | React.ComponentType;
   context: React.Context<IFormContext>;
 }
 
 export default function Field(props: IProps) {
-  const { name, component, context, ...otherProps } = props;
+  const { name, type, component, context, ...otherProps } = props;
   const { state, dispatch } = useContext(context);
   const Component = component || 'input';
+  const Type = type || 'input';
 
   const handleChange: React.ChangeEventHandler = (
     e: React.ChangeEvent<HTMLInputElement>
@@ -23,6 +25,7 @@ export default function Field(props: IProps) {
       Component,
       {
         onChange: handleChange,
+        type: Type,
         value: state[name],
         ...otherProps,
       }
