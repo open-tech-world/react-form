@@ -5,12 +5,13 @@ import FormContext from './formContext';
 import reducer from './reducer';
 
 interface IProps {
+  initialValues?: object;
   onSubmit: (values: object) => void;
   children: React.ReactNode[];
 }
 
 function Form(props: IProps) {
-  const [state, dispatch] = useReducer(reducer, {});
+  const [state, dispatch] = useReducer(reducer, props.initialValues || {});
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

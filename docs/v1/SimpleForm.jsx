@@ -9,7 +9,7 @@ export default function SimpleForm() {
 
   return (
     <div>
-      <Form onSubmit={handleSubmit}>
+      <Form initialValues={{ firstName: 'Ganapathy', otherField: [] }} onSubmit={handleSubmit}>
         <div>
           <div>
             <Field name="firstName" />
