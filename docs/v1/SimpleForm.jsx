@@ -10,10 +10,20 @@ export default function SimpleForm() {
   return (
     <div>
       <Form onSubmit={handleSubmit}>
-        <Field name="firstName" />
-        <Field name="lastName" />
-        <Field name="accept" type="checkbox" />
-        <button type="submit">Submit</button>
+        <div>
+          <div>
+            <Field name="firstName" />
+          </div>
+        </div>
+        <div>
+          <Field name="lastName" />
+        </div>
+        <div>
+          <Field name="accept" type="checkbox" />
+        </div>
+        <div>
+          <button type="submit">Submit</button>
+        </div>
       </Form>
     </div>
   );

@@ -26,7 +26,7 @@ export default function Field(props: IProps) {
       {
         onChange: handleChange,
         type: Type,
-        value: state[name],
+        value: state[name] || '',
         ...otherProps,
       }
     );
