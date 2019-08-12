@@ -1,13 +1,22 @@
 {
-    "title": "@open-tech-world/react-form",
-    "githubRepoURL": "",
-    "versions": [
+  "title": "@open-tech-world/react-form",
+  "githubRepoURL": "",
+  "versions": [
+    {
+      "name": "v1",
+      "tag": "Latest",
+      "root": "/index",
+      "default": true,
+      "menu": [
         {
-            "name": "v1",
-            "tag": "Latest",
-            "root": "/index",
-            "default": true,
-            "menu": []
+          "name": "SimpleForm",
+          "path": "/SimpleForm"
+        },
+        {
+          "name": "ReactSelectForm",
+          "path": "/ReactSelectForm"
         }
-    ]
+      ]
+    }
+  ]
 }

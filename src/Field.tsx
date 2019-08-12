@@ -15,11 +15,13 @@ export default function Field(props: IProps) {
   const Component = component || 'input';
   const Type = type || 'text';
 
-  const handleChange: React.ChangeEventHandler = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    dispatch({ type: 'set', payload: { name, value: e.currentTarget.value } });
+  const handleChange = (newValue: any) => {
+    const value = newValue.currentTarget
+      ? newValue.currentTarget.value
+      : newValue;
+    dispatch({ type: 'set', payload: { name, value } });
   };
+
   return useMemo(() => {
     return React.createElement<React.InputHTMLAttributes<HTMLInputElement>>(
       Component,

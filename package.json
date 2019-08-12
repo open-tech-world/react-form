@@ -22,6 +22,7 @@
     "@open-tech-world/create-react-doc": "^0.5.12",
     "@types/react": "^16.9.0",
     "mdi-material-ui": "^6.2.0",
+    "react-select": "^3.0.4",
     "rollup": "^1.19.4",
     "rollup-plugin-cleaner": "^1.0.0",
     "rollup-plugin-typescript2": "^0.22.1",
