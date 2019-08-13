@@ -26,6 +26,7 @@ export default function Field(props: IProps) {
     return React.createElement<React.InputHTMLAttributes<HTMLInputElement>>(
       Component,
       {
+        name,
         onChange: handleChange,
         type: Type,
         value: state[name] || '',
