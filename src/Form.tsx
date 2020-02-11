@@ -18,7 +18,7 @@ function Form(props: IProps) {
     props.onSubmit(state);
   };
 
-  const renderChildren = (children: React.ReactNode[]): React.ReactNode[] => {
+  const renderChildren = (children: React.ReactNode[]): React.ReactNode[] | undefined | null => {
     return React.Children.map(children, child => {
       if (child && React.isValidElement(child)) {
         if (child.type === Field) {
