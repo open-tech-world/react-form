@@ -16,9 +16,10 @@ export default function Field(props: IProps) {
   const Type = type || 'text';
 
   const handleChange = (newValue: any) => {
-    const value = newValue.currentTarget
-      ? newValue.currentTarget.value
-      : newValue;
+    const value =
+      newValue && newValue.currentTarget
+        ? newValue.currentTarget.value
+        : newValue;
     dispatch({ type: 'set', payload: { name, value } });
   };
 
