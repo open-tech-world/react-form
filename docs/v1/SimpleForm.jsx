@@ -9,7 +9,7 @@ export default function SimpleForm() {
 
   return (
     <div>
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} initialValues={{ employed: 'Salaried' }}>
         <div>
           <label>First Name</label>
           <div>
@@ -89,9 +89,7 @@ export default function SimpleForm() {
           </div>
         </div>
         <div>
-          <button type="submit">
-            Submit
-          </button>
+          <button type="submit">Submit</button>
         </div>
       </Form>
     </div>
