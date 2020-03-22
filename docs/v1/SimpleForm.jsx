@@ -1,6 +1,22 @@
 import React from 'react';
+import TextField from '@material-ui/core/TextField';
 
 import { Form, Field } from '../../src';
+
+function MUITextField(props) {
+  const { type, label, onChange, value, required } = props;
+  return (
+    <TextField
+      fullWidth
+      label={label}
+      variant="outlined"
+      type={type}
+      onChange={onChange}
+      value={value}
+      required={required}
+    />
+  );
+}
 
 export default function SimpleForm() {
   const handleSubmit = values => {
@@ -10,6 +26,14 @@ export default function SimpleForm() {
   return (
     <div>
       <Form onSubmit={handleSubmit} initialValues={{ employed: 'Salaried' }}>
+        <div>
+          <Field
+            name="firstName"
+            component={MUITextField}
+            type="email"
+            placeholder="First Name"
+          />
+        </div>
         <div>
           <label>First Name</label>
           <div>

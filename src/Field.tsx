@@ -24,6 +24,7 @@ export default function Field(props: IProps) {
 
   const componentProps = {
     name,
+    type,
     onChange: handleChange,
     ...otherProps,
   };
@@ -33,7 +34,6 @@ export default function Field(props: IProps) {
       return React.createElement<React.InputHTMLAttributes<HTMLInputElement>>(
         component,
         {
-          type,
           checked: state[name] ? true : false,
           value: state[name] || false,
           ...componentProps,
@@ -48,7 +48,6 @@ export default function Field(props: IProps) {
     return React.createElement<React.InputHTMLAttributes<HTMLInputElement>>(
       component,
       {
-        type,
         value: value || state[name] || '',
         ...componentProps,
       }
