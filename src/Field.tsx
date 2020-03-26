@@ -1,18 +1,17 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useMemo } from 'react';
 
-import { IFormContext } from './formContext';
+import useFormContext from './useFormContext';
 
 interface IProps {
   name: string;
   type: string;
   component: string | React.ComponentType;
   value: any;
-  context: React.Context<IFormContext>;
 }
 
 export default function Field(props: IProps) {
-  const { name, type, component, value, context, ...otherProps } = props;
-  const { state, dispatch } = useContext(context);
+  const { name, type, component, value, ...otherProps } = props;
+  const { state, dispatch } = useFormContext();
 
   const handleChange = (newValue: any) => {
     const value =
@@ -37,7 +36,7 @@ export default function Field(props: IProps) {
           checked: state[name] ? true : false,
           value: state[name] || false,
           ...componentProps,
-          onChange: e => {
+          onChange: (e: any) => {
             e.target.checked
               ? handleChange(value ? value : true)
               : handleChange(value ? '' : false);
@@ -58,13 +57,11 @@ export default function Field(props: IProps) {
     if (typeof component === 'string') {
       return renderNativeComponent();
     }
-    return React.createElement<React.InputHTMLAttributes<HTMLInputElement>>(
-      component,
-      {
-        value: state[name],
-        ...componentProps,
-      }
-    );
+
+    return React.createElement<React.InputHTMLAttributes<HTMLInputElement>>(component, {
+      value: state[name],
+      ...componentProps,
+    });
   };
 
   return useMemo(() => renderNativeOrCustomComponent(), [state[name]]);

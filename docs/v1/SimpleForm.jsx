@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
 
-import { Form, Field } from '../../src';
+import { Form, Field, useField } from '../../src';
 
 function MUITextField(props) {
   const { type, label, onChange, value, required } = props;
+  const { state, setFieldValue } = useField();
+
+  useEffect(() => {
+    if (state.firstName) {
+      setFieldValue('email', `${state.firstName}@gmail.com`);
+    }
+  }, [state.firstName]);
+
   return (
     <TextField
       fullWidth
@@ -25,13 +33,12 @@ export default function SimpleForm() {
 
   return (
     <div>
-      <Form onSubmit={handleSubmit} initialValues={{ employed: 'Salaried' }}>
+      <Form onSubmit={handleSubmit} initialValues={{ companyName: '' }}>
         <div>
           <Field
-            name="firstName"
+            name="companyName"
             component={MUITextField}
-            type="email"
-            placeholder="First Name"
+            placeholder="Company Name"
           />
         </div>
         <div>

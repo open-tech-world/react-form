@@ -1,6 +1,5 @@
 import React, { useReducer } from 'react';
 
-import Field from './Field';
 import FormContext from './formContext';
 import reducer from './reducer';
 
@@ -18,29 +17,9 @@ function Form(props: IProps) {
     props.onSubmit(state);
   };
 
-  const renderChildren = (children: React.ReactNode[]): React.ReactNode[] | undefined | null => {
-    return React.Children.map(children, child => {
-      if (child && React.isValidElement(child)) {
-        if (child.type === Field) {
-          return React.cloneElement(child, {
-            context: FormContext,
-            ...child.props,
-          });
-        }
-        if (child.props.children) {
-          return React.cloneElement(child, {
-            ...child.props,
-            children: renderChildren(child.props.children),
-          });
-        }
-      }
-      return child;
-    });
-  };
-
   return (
     <FormContext.Provider value={{ state, dispatch }}>
-      <form onSubmit={handleSubmit}>{renderChildren(props.children)}</form>
+      <form onSubmit={handleSubmit}>{props.children}</form>
     </FormContext.Provider>
   );
 }
