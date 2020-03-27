@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, forwardRef } from 'react';
 
 import FormContext from './formContext';
 import reducer from './reducer';
@@ -9,7 +9,7 @@ interface IProps {
   children: React.ReactNode[];
 }
 
-function Form(props: IProps) {
+export const Form = forwardRef((props: IProps, ref: any) => {
   const [state, dispatch] = useReducer(reducer, props.initialValues || {});
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -17,11 +17,11 @@ function Form(props: IProps) {
     props.onSubmit(state);
   };
 
-  return (
+  return  (
     <FormContext.Provider value={{ state, dispatch }}>
-      <form onSubmit={handleSubmit}>{props.children}</form>
+      <form ref={ref} onSubmit={handleSubmit}>
+        {props.children}
+      </form>
     </FormContext.Provider>
   );
-}
-
-export default Form;
+})

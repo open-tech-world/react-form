@@ -27,13 +27,25 @@ function MUITextField(props) {
 }
 
 export default function SimpleForm() {
+  const ref = React.createRef();
+
+  useEffect(() => {
+    console.log(ref);
+    console.log(ref.current);
+    ref.current.requestSubmit();
+  }, []);
+
   const handleSubmit = values => {
     console.log(values);
   };
 
   return (
     <div>
-      <Form onSubmit={handleSubmit} initialValues={{ companyName: '' }}>
+      <Form
+        ref={ref}
+        onSubmit={handleSubmit}
+        initialValues={{ companyName: '' }}
+      >
         <div>
           <Field
             name="companyName"

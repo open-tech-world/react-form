@@ -14,10 +14,7 @@
     "doc": "create-react-doc"
   },
   "repository": "git@github.com:open-tech-world/react-form.git",
-  "author": {
-    "name": "Thanga Ganapathy",
-    "email": "ganapathy888@gmail.com"
-  },
+  "author": "open-tech-world",
   "license": "MIT",
   "devDependencies": {
     "@material-ui/core": "^4.9.7",
