@@ -1,6 +1,6 @@
 {
   "name": "@open-tech-world/react-form",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Create forms in React.",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
