@@ -5,11 +5,11 @@ export interface IAction {
 
 export default function reducer(state: object, action: IAction): object {
   switch (action.type) {
-    case 'reset':
+    case 'RESET':
       return { ...action.payload };
-    case 'set':
+    case 'SET_FIELD':
       return { ...state, [action.payload.name]: action.payload.value };
-    case 'setValues':
+    case 'SET_STATE':
       return { ...action.payload };
     default:
       throw new Error();

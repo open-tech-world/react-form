@@ -18,7 +18,7 @@ export default function Field(props: IProps) {
       newValue && newValue.currentTarget
         ? newValue.currentTarget.value
         : newValue;
-    dispatch({ type: 'set', payload: { name, value } });
+    dispatch({ type: 'SET_FIELD', payload: { name, value } });
   };
 
   const componentProps = {

@@ -1,39 +1,9 @@
-import React, { useEffect } from 'react';
-import TextField from '@material-ui/core/TextField';
+import React, { useState } from 'react';
 
-import { Form, Field, useField } from '../../src';
-
-function MUITextField(props) {
-  const { type, label, onChange, value, required } = props;
-  const { state, setFieldValue } = useField();
-
-  useEffect(() => {
-    if (state.firstName) {
-      setFieldValue('email', `${state.firstName}@gmail.com`);
-    }
-  }, [state.firstName]);
-
-  return (
-    <TextField
-      fullWidth
-      label={label}
-      variant="outlined"
-      type={type}
-      onChange={onChange}
-      value={value}
-      required={required}
-    />
-  );
-}
+import { Form, Field } from '../../src';
 
 export default function SimpleForm() {
-  const ref = React.createRef();
-
-  useEffect(() => {
-    console.log(ref);
-    console.log(ref.current);
-    ref.current.requestSubmit();
-  }, []);
+  const [initialValues, setInitialValues] = useState({ employed: true });
 
   const handleSubmit = values => {
     console.log(values);
@@ -41,18 +11,7 @@ export default function SimpleForm() {
 
   return (
     <div>
-      <Form
-        ref={ref}
-        onSubmit={handleSubmit}
-        initialValues={{ companyName: '' }}
-      >
-        <div>
-          <Field
-            name="companyName"
-            component={MUITextField}
-            placeholder="Company Name"
-          />
-        </div>
+      <Form onSubmit={handleSubmit} initialValues={initialValues}>
         <div>
           <label>First Name</label>
           <div>

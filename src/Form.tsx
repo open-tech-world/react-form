@@ -1,4 +1,4 @@
-import React, { useReducer, forwardRef } from 'react';
+import React, { useReducer, forwardRef, useEffect } from 'react';
 
 import FormContext from './formContext';
 import reducer from './reducer';
@@ -12,16 +12,22 @@ interface IProps {
 export const Form = forwardRef((props: IProps, ref: any) => {
   const [state, dispatch] = useReducer(reducer, props.initialValues || {});
 
+  useEffect(() => {
+    if (props.initialValues) {
+      dispatch({ type: 'SET_STATE', payload: props.initialValues });
+    }
+  }, [props.initialValues]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     props.onSubmit(state);
   };
 
-  return  (
+  return (
     <FormContext.Provider value={{ state, dispatch }}>
       <form ref={ref} onSubmit={handleSubmit}>
         {props.children}
       </form>
     </FormContext.Provider>
   );
-})
+});

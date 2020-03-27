@@ -6,7 +6,7 @@ export default function useField() {
     state: context.state,
     setFieldValue: (fieldName: string, fieldValue: any) => {
       context.dispatch({
-        type: 'set',
+        type: 'SET_FIELD',
         payload: { name: fieldName, value: fieldValue },
       });
     },
