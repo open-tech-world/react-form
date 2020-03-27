@@ -18,8 +18,12 @@ $ yarn add @open-tech-world/react-form
 import { Form, Field } from '@open-tech-world/react-form';
 
 export default function myForm() {
+  const handleSubmit = values => {
+    console.log(values);
+  };
+
   return (
-    <Form onSubmit={handleSubmit} initialValues={{ companyName: '' }}>
+    <Form onSubmit={handleSubmit} initialValues={{}}>
       <div>
         <label>First Name</label>
         <div>
