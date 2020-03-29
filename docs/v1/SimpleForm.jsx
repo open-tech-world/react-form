@@ -1,17 +1,34 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { Form, Field } from '../../src';
+import { Form, Field, FieldArray } from '../../src';
 
 export default function SimpleForm() {
-  const [initialValues, setInitialValues] = useState({ employed: true });
-
   const handleSubmit = values => {
     console.log(values);
   };
 
+  const renderPLField = (languages, push, remove) => {
+    return (
+      <div>
+        {languages &&
+          languages.map(l => (
+            <div key={`${l}.name`}>
+              <Field name={`${l}.name`} component="input" type="text" />
+              <button type="button" onClick={() => remove(i)}>
+                Del
+              </button>
+            </div>
+          ))}
+        <button type="button" onClick={() => push({})}>
+          Add
+        </button>
+      </div>
+    );
+  };
+
   return (
     <div>
-      <Form onSubmit={handleSubmit} initialValues={initialValues}>
+      <Form onSubmit={handleSubmit}>
         <div>
           <label>First Name</label>
           <div>
@@ -91,6 +108,14 @@ export default function SimpleForm() {
           </div>
         </div>
         <div>
+          <label>Programming Languages</label>
+          <div>
+            <FieldArray name="programmingLanguages" component={renderPLField} />
+          </div>
+        </div>
+        <div>
+          <br />
+          <br />
           <button type="submit">Submit</button>
         </div>
       </Form>
