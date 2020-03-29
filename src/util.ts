@@ -1,16 +1,16 @@
-function toPath(str: string) {
+export function toPath(str: string) {
   return str.match(/(\w+)/g) || [];
 }
 
-function isNumber(str: string) {
+export function isNumber(str: string) {
   return !isNaN(Number(str));
 }
 
-type stateObject = {
+export type stateObject = {
   [key: string]: any;
 };
 
-function getIn(obj: stateObject, path: string) {
+export function getIn(obj: stateObject, path: string): any {
   const pathArr = toPath(path);
   let currentPath = obj;
   pathArr.forEach(item => {
@@ -20,7 +20,7 @@ function getIn(obj: stateObject, path: string) {
   return currentPath;
 }
 
-function setIn(obj: stateObject, path: string, value: any) {
+export function setIn(obj: stateObject, path: string, value: any) {
   const pathArr = toPath(path);
   let currentPath = obj;
   pathArr.forEach((item, index) => {
@@ -33,4 +33,6 @@ function setIn(obj: stateObject, path: string, value: any) {
     }
     currentPath = currentPath[item];
   });
+
+  return { ...obj };
 }
