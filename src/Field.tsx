@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 
 import useFormContext from './useFormContext';
+import { getIn } from './util';
 
 interface IProps {
   name: string;
@@ -12,6 +13,7 @@ interface IProps {
 export default function Field(props: IProps) {
   const { name, type, component, value, ...otherProps } = props;
   const { state, dispatch } = useFormContext();
+  const currentValue = getIn(state, name);
 
   const handleChange = (newValue: any) => {
     const value =
@@ -33,8 +35,8 @@ export default function Field(props: IProps) {
       return React.createElement<React.InputHTMLAttributes<HTMLInputElement>>(
         component,
         {
-          checked: state[name] ? true : false,
-          value: state[name] || false,
+          checked: currentValue ? true : false,
+          value: currentValue || false,
           ...componentProps,
           onChange: (e: any) => {
             e.target.checked
@@ -47,7 +49,7 @@ export default function Field(props: IProps) {
     return React.createElement<React.InputHTMLAttributes<HTMLInputElement>>(
       component,
       {
-        value: value || state[name] || '',
+        value: value || currentValue || '',
         ...componentProps,
       }
     );
@@ -58,11 +60,14 @@ export default function Field(props: IProps) {
       return renderNativeComponent();
     }
 
-    return React.createElement<React.InputHTMLAttributes<HTMLInputElement>>(component, {
-      value: state[name],
-      ...componentProps,
-    });
+    return React.createElement<React.InputHTMLAttributes<HTMLInputElement>>(
+      component,
+      {
+        value: currentValue as any,
+        ...componentProps,
+      }
+    );
   };
 
-  return useMemo(() => renderNativeOrCustomComponent(), [state[name]]);
+  return useMemo(() => renderNativeOrCustomComponent(), [currentValue]);
 }
