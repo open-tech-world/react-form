@@ -10,15 +10,14 @@ export default function SimpleForm() {
   const renderPLField = (languages, push, remove) => {
     return (
       <div>
-        {languages &&
-          languages.map(l => (
-            <div key={`${l}.name`}>
-              <Field name={`${l}.name`} component="input" type="text" />
-              <button type="button" onClick={() => remove(i)}>
-                Del
-              </button>
-            </div>
-          ))}
+        {languages.map((l, i) => (
+          <div key={`${l}.name`}>
+            <Field name={`${l}.name`} component="input" type="text" />
+            <button type="button" onClick={() => remove(i)}>
+              Del
+            </button>
+          </div>
+        ))}
         <button type="button" onClick={() => push({})}>
           Add
         </button>

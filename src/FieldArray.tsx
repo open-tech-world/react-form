@@ -5,13 +5,17 @@ import { getIn } from './util';
 
 interface IProps {
   name: string;
-  component: (fields: Array<any>, push: (obj: object) => void) => void;
+  component: (
+    fields: Array<any>,
+    push: (obj: object) => void,
+    remove: (index: number) => void
+  ) => void;
 }
 
 export default function FieldArray(this: any, props: IProps) {
   const { name, component } = props;
   const { state, dispatch } = useFormContext();
-  const currentValue = getIn(state, name) || [];
+  const currentValue: Array<any> = getIn(state, name) || [];
 
   const handlePush = (obj: object) => {
     dispatch({
@@ -20,9 +24,16 @@ export default function FieldArray(this: any, props: IProps) {
     });
   };
 
+  const handleRemove = (index: number) => {
+    dispatch({
+      type: 'SET_FIELD',
+      payload: { name, value: currentValue.filter((v, i) => index !== i) },
+    });
+  };
+
   const fields = currentValue.map((f: any, i: number) => `${name}[${i}]`);
 
-  return useMemo(() => component.call(this, fields, handlePush), [
+  return useMemo(() => component.call(this, fields, handlePush, handleRemove), [
     currentValue,
   ]);
 }
