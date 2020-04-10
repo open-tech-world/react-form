@@ -6,7 +6,7 @@ import reducer from './reducer';
 interface IProps {
   initialValues?: object;
   onSubmit: (values: object) => void;
-  children: React.ReactNode[];
+  children: (formState: object) => React.ReactNode | React.ReactNode;
 }
 
 export const Form = forwardRef((props: IProps, ref: any) => {
@@ -26,7 +26,7 @@ export const Form = forwardRef((props: IProps, ref: any) => {
   return (
     <FormContext.Provider value={{ state, dispatch }}>
       <form ref={ref} onSubmit={handleSubmit}>
-        {props.children}
+        {typeof(props.children) === 'function' ? props.children(state) : props.children}
       </form>
     </FormContext.Provider>
   );
