@@ -3,16 +3,12 @@ import React, { useMemo } from 'react';
 import useFormContext from './useFormContext';
 import { getIn } from './util';
 
-interface IProps {
+interface Props {
   name: string;
-  component: (
-    fields: Array<any>,
-    push: (obj: object) => void,
-    remove: (index: number) => void
-  ) => void;
+  component: (fields: Array<any>, push: (obj: object) => void, remove: (index: number) => void) => void;
 }
 
-export default function FieldArray(this: any, props: IProps) {
+export default function FieldArray(this: any, props: Props): React.ReactNode | void {
   const { name, component } = props;
   const { state, dispatch } = useFormContext();
   const currentValue: Array<any> = getIn(state, name) || [];
@@ -24,7 +20,7 @@ export default function FieldArray(this: any, props: IProps) {
     });
   };
 
-  const handleRemove = (index: number) => {
+  const handleRemove = (index: number): void => {
     dispatch({
       type: 'SET_FIELD',
       payload: { name, value: currentValue.filter((v, i) => index !== i) },
@@ -33,7 +29,5 @@ export default function FieldArray(this: any, props: IProps) {
 
   const fields = currentValue.map((f: any, i: number) => `${name}[${i}]`);
 
-  return useMemo(() => component.call(this, fields, handlePush, handleRemove), [
-    currentValue,
-  ]);
+  return useMemo(() => component.call(this, fields, handlePush, handleRemove), [currentValue]);
 }

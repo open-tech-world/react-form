@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { IAction } from './reducer';
+import { Action } from './reducer';
 
-export interface IFormContext {
-  state: { [key: string]: any };
-  dispatch: React.Dispatch<IAction>;
+export interface FormContext {
+  state: { [key: string]: unknown };
+  dispatch: React.Dispatch<Action>;
 }
 
-export default React.createContext<IFormContext>({
+export default React.createContext<FormContext>({
   dispatch: () => null,
   state: {},
 });

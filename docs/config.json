@@ -9,12 +9,16 @@
       "default": true,
       "menu": [
         {
-          "name": "SimpleForm",
+          "name": "Simple Form",
           "path": "/SimpleForm"
         },
         {
-          "name": "ReactSelectForm",
+          "name": "React-Select Form",
           "path": "/ReactSelectForm"
+        },
+        {
+          "name": "MUI Form",
+          "path": "/MUIForm"
         }
       ]
     }

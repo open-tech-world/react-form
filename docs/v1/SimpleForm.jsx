@@ -25,73 +25,43 @@ export default function SimpleForm() {
     );
   };
 
+  const initialValues = { firstName: 'Test', dummy: { a: [1, 2] }, pLangs: [{ name: 'c' }] };
+  console.log(initialValues);
+
   return (
     <div>
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} initialValues={initialValues}>
         {(formState) => (
           <>
             <div>
               <label>First Name</label>
               <div>
-                <Field
-                  name="firstName"
-                  component="input"
-                  type="text"
-                  placeholder="First Name"
-                />
+                <Field name="firstName" component="input" type="text" placeholder="First Name" />
               </div>
             </div>
             <div>
               <label>Last Name</label>
               <div>
-                <Field
-                  name="lastName"
-                  component="input"
-                  type="text"
-                  placeholder="Last Name"
-                />
+                <Field name="lastName" component="input" type="text" placeholder="Last Name" />
               </div>
             </div>
             <div>
               <label>Email</label>
               <div>
-                <Field
-                  name="email"
-                  component="input"
-                  type="email"
-                  placeholder="Email"
-                />
+                <Field name="email" component="input" type="email" placeholder="Email" />
               </div>
             </div>
             <div>
               <label>Sex</label>
               <div>
                 <label>
-                  <Field
-                    name="sex"
-                    component="input"
-                    type="radio"
-                    value="male"
-                  />{' '}
-                  Male
+                  <Field name="sex" component="input" type="radio" value="male" /> Male
                 </label>
                 <label>
-                  <Field
-                    name="sex"
-                    component="input"
-                    type="radio"
-                    value="female"
-                  />{' '}
-                  Female
+                  <Field name="sex" component="input" type="radio" value="female" /> Female
                 </label>
                 <label>
-                  <Field
-                    name="sex"
-                    component="input"
-                    type="radio"
-                    value="other"
-                  />{' '}
-                  Other
+                  <Field name="sex" component="input" type="radio" value="other" /> Other
                 </label>
               </div>
             </div>
@@ -112,12 +82,7 @@ export default function SimpleForm() {
             <div>
               <label htmlFor="employed">Employed</label>
               <div>
-                <Field
-                  name="employed"
-                  id="employed"
-                  component="input"
-                  type="checkbox"
-                />
+                <Field name="employed" id="employed" component="input" type="checkbox" />
               </div>
             </div>
             <div>
@@ -129,10 +94,7 @@ export default function SimpleForm() {
             <div>
               <label>Programming Languages</label>
               <div>
-                <FieldArray
-                  name="programmingLanguages"
-                  component={renderPLField}
-                />
+                <FieldArray name="pLangs" component={renderPLField} />
               </div>
             </div>
             <div>

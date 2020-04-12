@@ -11,7 +11,7 @@ export type objectType = {
   [key: string]: unknown;
 };
 
-export function getIn(obj: objectType, path: string): unknown {
+export function getIn(obj: objectType, path: string): any {
   const pathArr = toPath(path);
   let currentPath = obj;
   pathArr.forEach((item) => {

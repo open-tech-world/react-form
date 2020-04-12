@@ -1,11 +1,11 @@
-import { setIn } from './util';
+import { setIn, objectType } from './util';
 
-export interface IAction {
+export interface Action {
   type: string;
   payload: any;
 }
 
-export default function reducer(state: object, action: IAction): object {
+export default function reducer(state: objectType, action: Action): object {
   switch (action.type) {
     case 'RESET':
       return { ...action.payload };
