@@ -30,12 +30,11 @@
     "eslint-config-prettier": "^6.10.1",
     "eslint-plugin-prettier": "^3.1.2",
     "jest": "^25.3.0",
-    "mdi-material-ui": "^6.2.0",
     "prettier": "^2.0.4",
     "react-select": "^3.0.4",
     "rollup": "^2.1.0",
     "rollup-plugin-cleaner": "^1.0.0",
-    "rollup-plugin-typescript2": "^0.26.0",
+    "rollup-plugin-typescript2": "^0.27.0",
     "typescript": "^3.5.3"
   },
   "peerDependencies": {
