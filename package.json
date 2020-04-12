@@ -8,7 +8,7 @@
     "dist/"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --watch",
     "start": "rollup -c -w",
     "build": "rollup -c",
     "doc": "create-react-doc"
@@ -17,17 +17,25 @@
   "author": "open-tech-world",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-typescript": "^7.9.0",
     "@material-ui/core": "^4.9.7",
     "@open-tech-world/create-react-doc": "^0.5.12",
     "@types/react": "^16.9.0",
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
+    "babel-jest": "^25.3.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "jest": "^25.3.0",
     "mdi-material-ui": "^6.2.0",
+    "prettier": "^2.0.4",
     "react-select": "^3.0.4",
     "rollup": "^2.1.0",
     "rollup-plugin-cleaner": "^1.0.0",
     "rollup-plugin-typescript2": "^0.26.0",
-    "tslint": "^6.1.0",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint-plugin-prettier": "^2.0.1",
     "typescript": "^3.5.3"
   },
   "peerDependencies": {
