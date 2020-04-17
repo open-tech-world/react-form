@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-ignore */
-import React, { useMemo } from 'react';
+import React from 'react';
 
 import useFormContext from './useFormContext';
 import { getIn } from './util';
@@ -58,5 +58,5 @@ export default function Field(props: Props): React.ReactNode {
     });
   };
 
-  return useMemo(() => renderNativeOrCustomComponent(), [currentValue]);
+  return renderNativeOrCustomComponent();
 }

@@ -25,7 +25,7 @@ export default function SimpleForm() {
     );
   };
 
-  const initialValues = { firstName: 'Test', dummy: { a: [1, 2] }, pLangs: [{ name: 'c' }] };
+  const initialValues = {};
   console.log(initialValues);
 
   return (
